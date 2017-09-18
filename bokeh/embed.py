@@ -72,7 +72,7 @@ def _ModelInDocument(models, apply_theme=None):
     if settings.perform_document_validation():
         doc.validate()
 
-    yield models
+    yield doc
 
     for model in models_to_dedoc:
         doc.remove_root(model, apply_theme)
@@ -92,13 +92,13 @@ def _ModelInEmptyDocument(model, apply_theme=None):
     model._document = None
     for ref in model.references():
         ref._document = None
-    empty_doc = Document()
-    empty_doc.add_root(model)
+    new_doc = Document()
+    new_doc.add_root(model)
 
     if settings.perform_document_validation():
-        empty_doc.validate()
+        new_doc.validate()
 
-    yield model
+    yield new_doc
 
     model._document = doc
     for ref in model.references():
@@ -353,7 +353,7 @@ def notebook_content(model, notebook_comms_target=None, theme=FromCurdoc):
     model = _check_one_model(model)
 
     # Append models to one document. Either pre-existing or new and render
-    with _ModelInEmptyDocument(model, apply_theme=theme):
+    with _ModelInEmptyDocument(model, apply_theme=theme) as new_doc:
         (docs_json, render_items) = _standalone_docs_json_and_render_items([model])
 
     item = render_items[0]
@@ -369,7 +369,7 @@ def notebook_content(model, notebook_comms_target=None, theme=FromCurdoc):
 
     div = _div_for_render_item(item)
 
-    return encode_utf8(script), encode_utf8(div)
+    return encode_utf8(script), encode_utf8(div), new_doc
 
 def notebook_div(model, notebook_comms_target=None, theme=FromCurdoc):
     ''' Return HTML for a div that will display a Bokeh plot in a

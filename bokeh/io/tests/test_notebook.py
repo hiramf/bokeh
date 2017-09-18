@@ -39,24 +39,22 @@ api = {
 
     PUBLIC: (
 
-        ( 'CommsHandle',            (1, 0, 0) ),
-        ( 'CommsHandle.comms.fget', (1, 0, 0) ),
-        ( 'CommsHandle.doc.fget',   (1, 0, 0) ),
-        ( 'CommsHandle.json.fget',  (1, 0, 0) ),
-        ( 'CommsHandle.update',     (1, 0, 0) ),
-        ( 'install_notebook_hook',  (1, 0, 0) ),
-        ( 'push_notebook',          (1, 0, 0) ),
-        ( 'run_notebook_hook',      (1, 0, 0) ),
+        ( 'CommsHandle',           (1, 0, 0) ),
+        ( 'install_notebook_hook', (1, 0, 0) ),
+        ( 'push_notebook',         (1, 0, 0) ),
+        ( 'run_notebook_hook',     (1, 0, 0) ),
 
     ), INTERNAL: (
 
-        ( 'destroy_server',        (1, 0, 0) ),
-        ( 'get_comms',             (1, 0, 0) ),
-        ( 'install_jupyter_hooks', (1, 0, 0) ),
-        ( 'load_notebook',         (1, 0, 0) ),
-        ( 'publish_display_data',  (1, 0, 0) ),
-        ( 'show_app',              (1, 0, 0) ),
-        ( 'show_doc',              (1, 0, 0) ),
+        ( 'CommsHandle.comms.fget', (1, 0, 0) ),
+        ( 'CommsHandle.doc.fget',   (1, 0, 0) ),
+        ( 'destroy_server',         (1, 0, 0) ),
+        ( 'get_comms',              (1, 0, 0) ),
+        ( 'install_jupyter_hooks',  (1, 0, 0) ),
+        ( 'load_notebook',          (1, 0, 0) ),
+        ( 'publish_display_data',   (1, 0, 0) ),
+        ( 'show_app',               (1, 0, 0) ),
+        ( 'show_doc',               (1, 0, 0) ),
 
     )
 
